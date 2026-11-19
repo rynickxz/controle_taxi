@@ -44,11 +44,8 @@
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             $nome = $_POST['nome'];
-
             $cpf = $_POST['cpf'];
-
             $cnh = $_POST['cnh'];
-
             $telefone = $_POST['telefone'];
 
             require_once("../conexao.php");
@@ -57,21 +54,14 @@
                     VALUES (:nome, :cpf, :cnh, :telefone)";
 
             $resultado = $con->prepare($sql);
-
             $resultado->bindParam(":nome", $nome);
-
             $resultado->bindParam(":cpf", $cpf);
-
             $resultado->bindParam(":cnh", $cnh);
-
             $resultado->bindParam(":telefone", $telefone);
-
             if($resultado->execute())
 
                 echo "<p>Inserido com sucesso!</p>";
-
             else
-
                 echo "<p>Erro ao inserir!</p>";
 
         }

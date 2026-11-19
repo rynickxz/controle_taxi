@@ -9,23 +9,16 @@
         $sql = "SELECT * FROM viagens WHERE id = :id";
 
         $resultado = $con->prepare($sql);
-
         $resultado->bindParam(':id', $id);
-
         $resultado->execute();
-
         $dados = $resultado->fetch();
 
         if (!$dados){
-
             die("Registro não encontrado!");
-
         }
 
     } else {
-
         die("Não é possível abrir o arquivo!");
-
     }
 
 ?>
@@ -78,13 +71,9 @@
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             $valor = $_POST['valor'];
-
             $destino = $_POST['destino'];
-
             $motorista = $_POST['motorista'];
-
             $veiculo = $_POST['veiculo'];
-
             $id = $_GET['id'];
 
             require_once("../conexao.php");
@@ -92,23 +81,16 @@
             $sql = "UPDATE viagens SET valor = :valor, destino = :destino, motorista = :motorista, veiculo = :veiculo WHERE id = :id";
 
             $resultado = $con->prepare($sql);
-
             $resultado->bindParam(":valor", $valor);
-
             $resultado->bindParam(":destino", $destino);
-
             $resultado->bindParam(":motorista", $motorista);
-
             $resultado->bindParam(":veiculo", $veiculo);
-
             $resultado->bindParam(":id", $id);
 
             if($resultado->execute())
 
                 header("Location: index_viagem.php");
-
             else
-
                 echo "<p>Erro ao inserir!</p>";
 
         }

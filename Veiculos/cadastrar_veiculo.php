@@ -42,13 +42,9 @@
     <?php
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-
             $ano = $_POST['ano'];
-
             $placa = $_POST['placa'];
-
             $modelo = $_POST['modelo'];
-
             $cor = $_POST['cor'];
 
             require_once("../conexao.php");
@@ -57,21 +53,14 @@
                     VALUES (:ano, :placa, :modelo, :cor)";
 
             $resultado = $con->prepare($sql);
-
             $resultado->bindParam(":ano", $ano);
-
             $resultado->bindParam(":placa", $placa);
-
             $resultado->bindParam(":modelo", $modelo);
-
             $resultado->bindParam(":cor", $cor);
 
             if($resultado->execute())
-
                 echo "<p>Inserido com sucesso!</p>";
-
             else
-
                 echo "<p>Erro ao inserir!</p>";
 
         }

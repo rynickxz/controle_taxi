@@ -12,7 +12,6 @@
 <div class="container py-3">
 
     <h1>Lista de Viagens</h1>
-
     <?php
 
         require_once("../conexao.php");
@@ -20,9 +19,7 @@
         $sql = "SELECT * FROM viagens";
 
         $resultado = $con->query($sql);
-
         $dados = $resultado->fetchAll();
-
         foreach ($dados as $d){
 
             echo "<p>Destino: ".$d['destino']."

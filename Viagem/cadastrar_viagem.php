@@ -44,34 +44,23 @@
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             $valor = $_POST['valor'];
-
             $destino = $_POST['destino'];
-
             $motorista = $_POST['motorista'];
-
             $veiculo = $_POST['veiculo'];
-
             require_once("../conexao.php");
 
             $sql = "INSERT INTO viagens (valor, destino, motorista, veiculo)
                     VALUES (:valor, :destino, :motorista, :veiculo)";
 
             $resultado = $con->prepare($sql);
-
             $resultado->bindParam(":valor", $valor);
-
             $resultado->bindParam(":destino", $destino);
-
             $resultado->bindParam(":motorista", $motorista);
-
             $resultado->bindParam(":veiculo", $veiculo);
 
             if($resultado->execute())
-
                 echo "<p>Inserido com sucesso!</p>";
-
             else
-
                 echo "<p>Erro ao inserir!</p>";
 
         }

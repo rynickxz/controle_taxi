@@ -14,19 +14,12 @@
     <h1>Lista de Motoristas</h1>
 
     <?php
-
         require_once("../conexao.php");
-
         $sql = "SELECT * FROM motoristas";
-
         $resultado = $con->query($sql);
-
         $dados = $resultado->fetchAll();
-
         foreach ($dados as $d){
-
             echo "<p>Nome: ".$d['nome']."
-
             <a href='consulta_motorista.php?id=".$d['id']."'>Consultar</a></p>";
 
         }

@@ -1,31 +1,22 @@
 <?php
 
     if(isset($_GET['id'])){
-
         $id = $_GET['id'];
 
         require_once("../conexao.php");
 
         $sql = "SELECT * FROM motoristas WHERE id = :id";
-
         $resultado = $con->prepare($sql);
-
         $resultado->bindParam(':id', $id);
-
         $resultado->execute();
-
         $dados = $resultado->fetch();
 
         if (!$dados){
-
             die("Registro não encontrado!");
-
         }
 
     } else {
-
         die("Não é possível abrir o arquivo!");
-
     }
 
 ?>
@@ -42,9 +33,7 @@
 <body>
 
 <div class="container py-3">
-
     <h1>Dados do Motorista</h1>
-
     <form method="post">
 
         <div class="mb-3">
@@ -68,7 +57,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Alterar</button>
-
         <a href="excluir_motorista.php?id=<?= $dados['id'] ?>" class="btn btn-danger">Excluir</a>
 
     </form>
@@ -76,15 +64,10 @@
     <?php
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-
             $nome = $_POST['nome'];
-
             $cpf = $_POST['cpf'];
-
             $cnh = $_POST['cnh'];
-
             $telefone = $_POST['telefone'];
-
             $id = $_GET['id'];
 
             require_once("../conexao.php");
@@ -92,23 +75,16 @@
             $sql = "UPDATE motoristas SET nome = :nome, cpf = :cpf, cnh = :cnh, telefone = :telefone WHERE id = :id";
 
             $resultado = $con->prepare($sql);
-
             $resultado->bindParam(":nome", $nome);
-
             $resultado->bindParam(":cpf", $cpf);
-
             $resultado->bindParam(":cnh", $cnh);
-
             $resultado->bindParam(":telefone", $telefone);
-
             $resultado->bindParam(":id", $id);
 
             if($resultado->execute())
 
                 header("Location: index_motorista.php");
-
             else
-
                 echo "<p>Erro ao inserir!</p>";
 
         }
